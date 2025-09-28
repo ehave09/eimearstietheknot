@@ -175,37 +175,62 @@ $(document).ready(function () {
         $('#btn-show-content').toggleClass('toggle-map-content');
     });
 
-    /********************** Add to Calendar **********************/
-    var myCalendar = createCalendar({
-        options: {
-            class: '',
-            // You can pass an ID. If you don't, one will be generated for you
-            id: ''
-        },
-        data: {
-            // Event title
-            title: "Ram and Antara's Wedding",
+    // ---- Config ----
+var WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbx_SgNsEqoPguZK6Y3KNXXqWxdA54n6X61s_QOfOZpZPhQW1mg7Uvl3le76eoX3j_ghzw/exec';
 
-            // Event start date
-            start: new Date('Nov 27, 2017 10:00'),
+// Attendance option sets
+var OPTIONS_PLUS_ONE = [
+  { v: 'Attending with my partner', t: 'Attending with my partner' },
+  { v: 'Attending without my partner', t: 'Attending without my partner' },
+  { v: 'Not able to attend', t: 'Not able to attend' }
+];
+var OPTIONS_SOLO = [
+  { v: 'Attending', t: 'Attending' },
+  { v: 'Unable to attend', t: 'Unable to attend' }
+];
 
-            // Event duration (IN MINUTES)
-            // duration: 120,
+function setAttendanceOptions(allowPlusOne) {
+  var $sel = $('#attendance');
+  $sel.empty().append('<option value="" disabled selected>Choose an option…</option>');
+  (allowPlusOne ? OPTIONS_PLUS_ONE : OPTIONS_SOLO).forEach(function(o){
+    $sel.append($('<option>', { value: o.v, text: o.t }));
+  });
+  $sel.prop('disabled', false);
+}
 
-            // You can also choose to set an end time
-            // If an end time is set, this will take precedence over duration
-            end: new Date('Nov 29, 2017 00:00'),
+// Disable submit until verified
+$('.rsvp-btn').prop('disabled', true);
 
-            // Event Address
-            address: 'ITC Fortune Park Hotel, Kolkata',
+// When name or invite code changes, attempt lookup
+function tryLookup() {
+  var name = $('[name="name"]').val().trim();
+  var code = $('#invite_code').val().trim();
+  if (!name || !code) { return; }
 
-            // Event Description
-            description: "We can't wait to see you on our big day. For any queries or issues, please contact Mr. Amit Roy at +91 9876543210."
-        }
+  $('#alert-wrapper').html(alert_markup('info', 'Checking your invite…'));
+
+  $.get(WEBAPP_URL, { action: 'lookup', name: name, invite_code: code })
+    .done(function (resp) {
+      if (resp && resp.ok) {
+        $('#alert-wrapper').html(alert_markup('success', 'Invite found!'));
+        var allow = resp.allow_plus_one === true || resp.allow_plus_one === 'true' || resp.allow_plus_one === 1 || resp.allow_plus_one === '1';
+        setAttendanceOptions(allow);
+        $('.rsvp-btn').prop('disabled', false);
+      } else {
+        $('#attendance').prop('disabled', true).empty().append('<option value="" selected disabled>Choose an option…</option>');
+        $('.rsvp-btn').prop('disabled', true);
+        $('#alert-wrapper').html(alert_markup('danger', 'Sorry, we couldn’t match that name and invite code.'));
+      }
+    })
+    .fail(function () {
+      $('#attendance').prop('disabled', true);
+      $('.rsvp-btn').prop('disabled', true);
+      $('#alert-wrapper').html(alert_markup('danger', 'Server error while checking your invite.'));
     });
+}
 
-    $('#add-to-cal').html(myCalendar);
-
+// Trigger lookup on blur/change (you can add a “Check” button if you prefer)
+$('[name="name"], #invite_code').on('blur change', tryLookup);
 
     /********************** RSVP **********************/
     $('#rsvp-form').on('submit', function (e) {
@@ -214,11 +239,11 @@ $(document).ready(function () {
 
         $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
 
-        if (MD5($('#invite_code').val()) !== 'b0e53b10c1f55ede516b240036b88f40'
-            && MD5($('#invite_code').val()) !== '2ac7f43695eb0479d5846bb38eec59cc') {
+        if (MD5($('#invite_code').val()) !== '34ec914cc05533062ba02c295197b146'
+            && MD5($('#invite_code').val()) !== 'e0d733c19cc3dbb07274899e1866a827') {
             $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> Your invite code is incorrect.'));
         } else {
-            $.post('https://script.google.com/macros/s/AKfycbyo0rEknln8LedEP3bkONsfOh776IR5lFidLhJFQ6jdvRiH4dKvHZmtoIybvnxpxYr2cA/exec', data)
+            $.post('https://script.google.com/macros/s/AKfycbx_SgNsEqoPguZK6Y3KNXXqWxdA54n6X61s_QOfOZpZPhQW1mg7Uvl3le76eoX3j_ghzw/exec', data)
                 .done(function (data) {
                     console.log(data);
                     if (data.result === "error") {
@@ -241,11 +266,11 @@ $(document).ready(function () {
 
 // Google map
 function initMap() {
-    var location = {lat: 22.5932759, lng: 88.27027720000001};
+    var location = {lat: 37.126194, lng: -8.266278};
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 15,
         center: location,
-        scrollwheel: false
+        scrollwheel: true
     });
 
     var marker = new google.maps.Marker({
@@ -255,11 +280,11 @@ function initMap() {
 }
 
 function initBBSRMap() {
-    var la_fiesta = {lat: 20.305826, lng: 85.85480189999998};
+    var la_fiesta = {lat: 37.126194, lng: -8.266278};
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 15,
         center: la_fiesta,
-        scrollwheel: false
+        scrollwheel: true
     });
 
     var marker = new google.maps.Marker({
