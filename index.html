@@ -146,46 +146,54 @@
                 <p>Now here we are, 7 years as partners In crime, with big girl jobs, our dream home, a stunning engagement in Santorini, our little sidekick Goujon 🐶 and gearing up for the most important day of our lives, which we can’t wait to share with our nearest and dearest.</p>
 </div>
 </div>
+
+<style>/* Tidy, zoom-proof image grid */
+.gallery-grid{
+  --tile: clamp(140px, 18vw, 200px);   /* keeps tiles from getting huge/small */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--tile), 1fr));
+  gap: 16px;
+  max-width: 1140px;                   /* match your content width */
+  margin: 0 auto;                      /* center in the page */
+  padding: 0 8px;
+}
+
+.gallery-grid a{
+  display: block;
+  border-radius: 6px;
+  overflow: hidden;                    /* rounded corners clip the image */
+}
+
+.gallery-grid img{
+  width: 100%;
+  aspect-ratio: 1 / 1;                 /* perfect squares */
+  object-fit: cover;                   /* nicely cropped, never stretched */
+  display: block;
+}
+</style>
 <!-- ONE row, multiple columns -->
-<div class="row g-3 justify-content-center" id="pictures-gallery">
-  <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-    <a href="img/eng_pics/_RFX2942-lg.jpg" data-fancybox="eng">
-      <img src="img/eng_pics/_RFX2942-lg.jpg" class="img-fluid" alt="">
-    </a>
-  </div>
-
-  <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-    <a href="img/eng_pics/Manchester2.jpg" data-fancybox="eng">
-      <img src="img/eng_pics/Manchester2.jpg" class="img-fluid" alt="">
-    </a>
-  </div>
-
-  <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-    <a href="img/eng_pics/goujon.jpg" data-fancybox="eng">
-      <img src="img/eng_pics/goujon.jpg" class="img-fluid" alt="">
-    </a>
-  </div>
-
-  <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-    <a href="img/eng_pics/RTUX302.jpg" data-fancybox="eng">
-      <img src="img/eng_pics/RTUX302.jpg" class="img-fluid" alt="">
-    </a>
-  </div>
-
-  <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-    <a href="img/eng_pics/RJWS21.JPG" data-fancybox="eng">
-      <img src="img/eng_pics/RJWS21.JPG" class="img-fluid" alt="">
-    </a>
-  </div>
-
-  <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-    <a href="img/eng_pics/nightout.jpg" data-fancybox="eng">
-      <img src="img/eng_pics/nightout.jpg" class="img-fluid" alt="">
-    </a>
-  </div>
+<!-- Tidy responsive grid (no Bootstrap cols) -->
+<div id="pictures-gallery" class="gallery-grid" aria-label="Engagement photos">
+  <a href="img/eng_pics/_RFX2942-lg.jpg" data-fancybox="eng">
+    <img src="img/eng_pics/_RFX2942-lg.jpg" alt="">
+  </a>
+  <a href="img/eng_pics/Manchester2.jpg" data-fancybox="eng">
+    <img src="img/eng_pics/Manchester2.jpg" alt="">
+  </a>
+  <a href="img/eng_pics/goujon.jpg" data-fancybox="eng">
+    <img src="img/eng_pics/goujon.jpg" alt="">
+  </a>
+  <a href="img/eng_pics/RTUX302.jpg" data-fancybox="eng">
+    <img src="img/eng_pics/RTUX302.jpg" alt="">
+  </a>
+  <a href="img/eng_pics/RJWS21.JPG" data-fancybox="eng">
+    <img src="img/eng_pics/RJWS21.JPG" alt="">
+  </a>
+  <a href="img/eng_pics/nightout.jpg" data-fancybox="eng">
+    <img src="img/eng_pics/nightout.jpg" alt="">
+  </a>
 </div>
 <br>
-
 
 <section class="events section-padding" id="events">
     <div class="container">
