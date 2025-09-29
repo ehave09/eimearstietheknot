@@ -146,34 +146,9 @@
                 <p>Now here we are, 7 years as partners In crime, with big girl jobs, our dream home, a stunning engagement in Santorini, our little sidekick Goujon 🐶 and gearing up for the most important day of our lives, which we can’t wait to share with our nearest and dearest.</p>
 </div>
 </div>
-
-<style>/* Tidy, zoom-proof image grid */
-.gallery-grid{
-  --tile: clamp(140px, 18vw, 200px);   /* keeps tiles from getting huge/small */
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--tile), 1fr));
-  gap: 16px;
-  max-width: 1140px;                   /* match your content width */
-  margin: 0 auto;                      /* center in the page */
-  padding: 0 8px;
-}
-
-.gallery-grid a{
-  display: block;
-  border-radius: 6px;
-  overflow: hidden;                    /* rounded corners clip the image */
-}
-
-.gallery-grid img{
-  width: 100%;
-  aspect-ratio: 1 / 1;                 /* perfect squares */
-  object-fit: cover;                   /* nicely cropped, never stretched */
-  display: block;
-}
-</style>
 <!-- ONE row, multiple columns -->
-<!-- Tidy responsive grid (no Bootstrap cols) -->
-<div id="pictures-gallery" class="gallery-grid" aria-label="Engagement photos">
+<!-- ONE LINE, SCROLLABLE GALLERY -->
+<div class="gallery-strip" id="pictures-gallery">
   <a href="img/eng_pics/_RFX2942-lg.jpg" data-fancybox="eng">
     <img src="img/eng_pics/_RFX2942-lg.jpg" alt="">
   </a>
@@ -193,7 +168,7 @@
     <img src="img/eng_pics/nightout.jpg" alt="">
   </a>
 </div>
-<br>
+
 
 <section class="events section-padding" id="events">
     <div class="container">
