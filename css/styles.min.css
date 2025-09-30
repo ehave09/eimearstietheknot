@@ -10,3 +10,13 @@
 .invite-line2 {
   color: #6F4E37;
 }
+ .rsvp-btn-top {
+    position: relative;
+    top: 240px; /* moves it up */
+}
+#attendance,
+#attendance option {
+    font-family: inherit;   /* match surrounding font */
+    font-size: 14px;        /* adjust to match your inputs */
+    color: #797b81;            /* adjust to match input text color */
+}
