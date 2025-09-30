@@ -4,3 +4,6 @@
 .rsvp .rsvp-form .form-input-group select::-ms-expand{display:none}
 @media (max-width:480px){.rsvp .rsvp-form .form-input-group select{font-size:16px}}
 #pictures-gallery{display:flex;flex-wrap:nowrap;gap:16px;justify-content:center;align-items:stretch;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;padding:8px 0;scrollbar-width:none}#pictures-gallery::-webkit-scrollbar{display:none}#pictures-gallery>div{flex:0 0 auto;width:160px;max-width:28vw}@media(min-width:768px){#pictures-gallery>div{width:180px;max-width:18vw}}@media(min-width:992px){#pictures-gallery>div{width:200px;max-width:200px}}#pictures-gallery img{display:block;width:100%;height:100%;object-fit:cover;border-radius:6px}
+.invite-line {
+  color: #6F4E37;
+}
