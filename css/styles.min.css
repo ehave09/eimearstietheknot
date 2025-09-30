@@ -7,3 +7,13 @@
 .invite-line {
   color: #6F4E37;
 }
+@media (max-width: 767px){
+  #map-content-wrapper{
+    margin-top: 0;
+    margin-bottom: 20px;
+    position: static;
+  }
+  #map-canvas{
+    height: 300px;      /* shorter map on phones */
+  }
+}
