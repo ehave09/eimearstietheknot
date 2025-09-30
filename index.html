@@ -61,24 +61,6 @@
     <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-
-    <!-- Small fixes: keep RSVP submit near form; prevent map overlay on phones -->
-    <style>
-      .rsvp .rsvp-form .rsvp-btn{
-        margin-top: 15px;
-        width: 100%;
-      }
-      @media (max-width: 767px){
-        #map-content-wrapper{
-          margin-top: 0;
-          margin-bottom: 20px;
-          position: static;
-        }
-        #map-canvas{
-          height: 300px;
-        }
-      }
-    </style>
 </head>
 <body id="top">
 <!--[if lt IE 8]>
@@ -110,7 +92,13 @@
             </div>
         </header>
     </section>
-
+    <style>
+    /* Moves the RSVP button higher */
+    .rsvp-btn {
+        margin-top: 240px; /* Adjust value as needed */
+        position: relative;
+    }
+    </style>
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
@@ -142,7 +130,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h3 class="header">Our Story</h3>
+                <h3 class="invite-line">Our Story</h3>
             </div>
         </div>
         <div class="row">
@@ -179,13 +167,12 @@
   </a>
 </div>
 
-</section> <!-- end of #intro -->
 
 <section class="events section-padding" id="events">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h3 class="header">Schedule</h3>
+                <h3 class="invite-line">Schedule</h3>
             </div>
             <div class="col-md-12">
                 <h4 class="header">Day 1</h4>
@@ -424,7 +411,7 @@
                     <div class="row">
                         <div class="col-md-12" id="alert-wrapper"></div>
                     </div>
-                    <button type="submit" class="btn-fill rsvp-btn">
+                    <button class="btn-fill rsvp-btn">
                         SUBMIT
                     </button>
                 </form>
@@ -497,4 +484,3 @@
 </script>
 </body>
 </html>
-
