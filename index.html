@@ -61,6 +61,24 @@
     <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+    <!-- Small fixes: keep RSVP submit near form; prevent map overlay on phones -->
+    <style>
+      .rsvp .rsvp-form .rsvp-btn{
+        margin-top: 15px;
+        width: 100%;
+      }
+      @media (max-width: 767px){
+        #map-content-wrapper{
+          margin-top: 0;
+          margin-bottom: 20px;
+          position: static;
+        }
+        #map-canvas{
+          height: 300px;
+        }
+      }
+    </style>
 </head>
 <body id="top">
 <!--[if lt IE 8]>
@@ -92,18 +110,11 @@
             </div>
         </header>
     </section>
-    <style>
-    /* Moves the RSVP button higher */
-    .rsvp-btn {
-        margin-top: -200px; /* Adjust value as needed */
-        position: relative;
-    }
-    </style>
+
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="hero-content text-center">
-                    <img src="img/logo-lg.png">
                 </div>
             </div>
         <div class="row">
@@ -121,7 +132,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h3 style="color:#6F4E37;"><i>Join us as we say ‘I do’ in Monte das Oliveiras, Albufeira on 26.9.26!</i></h3>
+                <h3 class="invite-line"><i>Join us as we say ‘I do’ in Monte das Oliveiras, Albufeira on 26.9.26!</i></h3>
             </div>
         </div>
     </div>
@@ -138,7 +149,7 @@
             <div class="col-md-12 text-center">
                 <p>Our story began 9 years ago  in Sense Nighclub Cookstown where we’d both been working part time during Uni. It wasn’t exactly love at first sight as we instantly clicked and became best friends (by sharing a tray of apple Sourz shots).</p>
                     
-                <p>As the months went on we both ended up out for the night at Time Monday (some would say coincidence, others would say Eimear H knew Eimear Mc was going to be there). Here we shared our first kiss (although very drunken). This didn’t change much as we continued being best friends for 2 years until…. Final year of uni came.</p>
+                <p>We continued being best friends for 2 years until…. Final year of uni came.</p>
                     
                 <p>The Holylands set the scene and the feelings began to grow when we finally took the leap of faith and admitted how we truly felt about each other. After a trip to the Hatfield in December 18’, Eimear Mc accidentally/drunkenly referred to Eimear H as “my girlfriend” and the rest is history.</p>
                     
@@ -168,6 +179,7 @@
   </a>
 </div>
 
+</section> <!-- end of #intro -->
 
 <section class="events section-padding" id="events">
     <div class="container">
@@ -210,7 +222,6 @@
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
                 <div class="wp3">
-
                     <h5>O'Shea's Irish Pub Vilamoura <span class="time">7PM</span></h5>
                     <p>Feel free to join us in O'Shea's bar located in the Vilamoura Marina.</p>
                 </div>
@@ -242,7 +253,6 @@
                     <p>
                         <strong>Casual</strong>
                         <br>
-                        Feel free to wear your jerseys, we certainly will be.
                     </p>
                 </div>
             </div><!-- /.modal-content -->
@@ -414,7 +424,7 @@
                     <div class="row">
                         <div class="col-md-12" id="alert-wrapper"></div>
                     </div>
-                    <button class="btn-fill rsvp-btn">
+                    <button type="submit" class="btn-fill rsvp-btn">
                         SUBMIT
                     </button>
                 </form>
@@ -487,3 +497,4 @@
 </script>
 </body>
 </html>
+
