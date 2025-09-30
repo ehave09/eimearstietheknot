@@ -20,3 +20,18 @@
 .invite-line2 {
   color: #6F4E37;
 }
+@media (max-width: 767px) {
+  #map-canvas {
+    height: 300px;   /* shorter map on phones */
+  }
+
+  #map-content-wrapper {
+    position: absolute;   /* keep it on top of the map */
+    top: 10px;            /* distance from top of the map */
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 90%;           /* fit nicely on mobile */
+    z-index: 10;          /* make sure it overlays the map */
+  }
+}
