@@ -7,16 +7,28 @@
 .invite-line {
   color: #6F4E37;
 }
-@media (max-width: 767px){
-  #map-content-wrapper{
-    margin-top: 0;
-    margin-bottom: 20px;
-    position: static;
-  }
-  #map-canvas{
-    height: 300px;      /* shorter map on phones */
-  }
-}
 .invite-line2 {
   color: #6F4E37;
 }
+/* Make the overlay anchor to the map, not the page */
+.map-container { position: relative; }
+
+/* Mobile layout: shorter map and overlay the card on top of it */
+@media (max-width: 767px) {
+  #map-canvas { height: 300px; }
+
+  #map-content-wrapper {
+    position: absolute;   /* overlay the map */
+    top: 10px;            /* space from top of the map */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 640px;
+    margin: 0;
+    z-index: 10;
+  }
+}
+
+/* Ensure buttons inside the card remain clickable */
+#map-content-wrapper { pointer-events: none; }
+#map-content { pointer-events: auto; }
