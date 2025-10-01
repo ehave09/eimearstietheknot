@@ -66,3 +66,14 @@
 .rsvp {
   padding: 40px 0;
 }
+.invite-line {
+  font-size: 26px; /* default for desktop/tablet */
+  font-style: italic;
+}
+
+/* On phones (max-width: 480px), shrink the font */
+@media (max-width: 480px) {
+  .invite-line {
+    font-size: 18px; /* adjust until it fits on 2 lines */
+  }
+}
