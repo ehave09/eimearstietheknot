@@ -33,8 +33,8 @@
 @media (min-width:768px){
   #pictures-gallery > a,
   #pictures-gallery > div{
-    flex:0 0 25%;
-    max-width:25%;
+    flex:0 0 33.333%;       /* 3 per row on Tablets */
+  max-width:33.333%;
   }
 }
 
@@ -42,8 +42,8 @@
 @media (min-width:992px){
   #pictures-gallery > a,
   #pictures-gallery > div{
-    flex:0 0 16.666%;
-    max-width:16.666%;
+    flex:0 0 33.333%;       /* 3 per row on Desktop */
+    max-width:33.333%;
   }
 }
 
