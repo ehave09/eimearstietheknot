@@ -66,14 +66,23 @@
 .rsvp {
   padding: 40px 0;
 }
-.invite-line {
-  font-size: 26px; /* default for desktop/tablet */
-  font-style: italic;
+/* Default (laptops/tablets): keep your current look */
+.invite-line { 
+  font-size: 26px;             /* your desktop size */
+  font-style: italic;          /* mirrors the <i> */
+  /* if your theme uppercases h3s, undo it: */
+  /* text-transform: none; */
 }
 
-/* On phones (max-width: 480px), shrink the font */
-@media (max-width: 480px) {
+/* Phones: force exactly two lines + scale the font to fit nicely */
+@media (max-width: 480px){
   .invite-line {
-    font-size: 18px; /* adjust until it fits on 2 lines */
+    font-size: clamp(18px, 5.4vw, 22px);  /* tweak as needed */
+    line-height: 1.2;                     /* tighter heading line-height */
+  }
+  .invite-line .l1,
+  .invite-line .l2 {
+    display: block;                       /* enforce the 2-line split */
   }
 }
+
