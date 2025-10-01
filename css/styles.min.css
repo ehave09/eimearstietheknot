@@ -63,3 +63,6 @@
     font-size: 14px;        /* adjust to match your inputs */
     color: #999a9e;            /* adjust to match input text color */
 }
+.rsvp {
+  padding: 40px 0;
+}
