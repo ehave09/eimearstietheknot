@@ -66,19 +66,4 @@
 .rsvp {
   padding: 40px 0;
 }
-/* Default (laptops/tablets): keep your current look */
-.invite-line { 
-  font-size: 26px;             /* your desktop size */
-  font-style: italic;          /* mirrors the <i> */
-  /* if your theme uppercases h3s, undo it: */
-  /* text-transform: none; */
-}
-
-/* Phones: force exactly two lines + scale the font to fit nicely */
-@media (max-width: 480px){
-  .invite-line .l1,
-  .invite-line .l2 {
-    display: block;                       /* enforce the 2-line split */
-  }
-}
 
